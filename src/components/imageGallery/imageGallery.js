@@ -12,6 +12,9 @@ export default class ImageGallery extends Component {
     const nextName = this.props.imageName;
     const nextPage = this.props.page;
     const key = '22673335-b99cca5659da707c56ab45ca0';
+    if (prevProps.imageName !== nextName) {
+      this.setState({ images: [] });
+    }
     if (prevProps.imageName !== nextName || prevProps.page !== nextPage) {
       fetch(
         `https://pixabay.com/api/?q=${nextName}&page=${nextPage}&key=${key}&image_type=photo&orientation=horizontal&per_page=12`,
