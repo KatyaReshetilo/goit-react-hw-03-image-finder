@@ -38,22 +38,21 @@ class App extends Component {
     }));
   };
   render() {
+    const { imageName, bigImg, page, button, status, showModal } = this.state;
     return (
       <>
         <Searchbar onSubmit={this.handelFormSubmit} />
         <ImageGallery
-          imageName={this.state.imageName}
+          imageName={imageName}
           onOpen={this.toggleModal}
-          bigImg={this.state.bigImg}
-          page={this.state.page}
+          bigImg={bigImg}
+          page={page}
           onSelect={this.bigImgs}
           statusOff={this.statusOff}
         />
-        {this.state.button && <Button onClickAdd={this.addMore} />}
-        {this.state.status === 'load' && <Loader />}
-        {this.state.showModal && (
-          <Modal onClose={this.toggleModal} bigImg={this.state.bigImg} />
-        )}
+        {button && <Button onClickAdd={this.addMore} />}
+        {status === 'load' && <Loader />}
+        {showModal && <Modal onClose={this.toggleModal} bigImg={bigImg} />}
       </>
     );
   }
